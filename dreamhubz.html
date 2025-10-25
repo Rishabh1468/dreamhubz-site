@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dreamhubz — dreamhub.in</title>
+  <meta name="description" content="Dreamhubz — Rent latest iPhone variants at ₹599/month. Demo e‑commerce template (for demo/learning only)." />
+  <style>
+    :root{
+      --accent:#0ea5a4; /* teal accent */
+      --muted:#94a3b8;
+      --bg:#0b1020; /* space gray background */
+      --card:#0f1724;
+      --glass: rgba(255,255,255,0.04);
+      --text:#e6eef3;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#07101a,var(--bg));color:var(--text);-webkit-font-smoothing:antialiased}
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;background:linear-gradient(90deg,rgba(255,255,255,0.02),transparent)}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:52px;height:52px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:grid;place-items:center;border-radius:12px;color:#021226;font-weight:800;font-size:18px}
+    h1{font-size:18px;margin:0}
+    nav{display:flex;gap:12px;align-items:center}
+    .search{padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text);min-width:300px}
+
+    .container{max-width:1200px;margin:24px auto;padding:0 18px}
+    .hero{background:linear-gradient(90deg,rgba(255,255,255,0.02),rgba(14,165,164,0.04));padding:22px;border-radius:14px;display:flex;gap:18px;align-items:center}
+    .hero .left{flex:1}
+    .hero h2{margin:0 0 6px 0;font-size:24px}
+    .hero p{margin:0;color:var(--muted)}
+    .hero .cta{margin-top:12px;padding:10px 14px;background:var(--accent);color:#021226;border-radius:10px;border:0;cursor:pointer}
+
+    .filters{display:flex;gap:12px;align-items:center;margin:16px 0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:12px;border-radius:12px;box-shadow:0 8px 30px rgba(2,6,23,0.6);display:flex;flex-direction:column;border:1px solid rgba(255,255,255,0.02)}
+    .thumb{height:200px;border-radius:10px;background:linear-gradient(180deg,#0b1720,#07101a);display:grid;place-items:center;overflow:hidden}
+    .thumb img{width:100%;height:100%;object-fit:cover}
+    .title{font-weight:700;margin:10px 0 4px;color:var(--text)}
+    .meta{color:var(--muted);font-size:13px}
+    .price{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .rent{font-weight:800}
+    .btn{padding:9px 12px;border-radius:10px;border:0;cursor:pointer}
+    .btn-primary{background:var(--accent);color:#021226}
+    .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--text)}
+
+    .cart-btn{position:relative}
+    .cart-count{position:absolute;top:-8px;right:-8px;background:#ef4444;color:#fff;border-radius:999px;padding:4px 8px;font-size:12px}
+
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(2,6,23,0.5),rgba(2,6,23,0.7));padding:20px}
+    .modal.open{display:flex}
+    .modal-card{background:linear-gradient(180deg,#0b1220,#07101a);padding:18px;border-radius:12px;width:520px;max-width:96%;border:1px solid rgba(255,255,255,0.03)}
+
+    .tracker{display:flex;gap:8px;align-items:center;margin-top:12px}
+    .step{flex:1;background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;text-align:center;font-size:13px;color:var(--muted)}
+    .step.active{background:linear-gradient(90deg,var(--accent),#06b6d4);color:#021226}
+
+    footer{padding:18px;text-align:center;color:var(--muted);margin-top:28px}
+
+    @media (max-width:720px){
+      .hero{flex-direction:column;align-items:flex-start}
+      .search{min-width:140px}
+      .thumb{height:160px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">DH</div>
+      <div>
+        <h1>Dreamhubz <small style="color:var(--muted);display:block;font-weight:600;font-size:12px">dreamhub.in</small></h1>
+      </div>
+    </div>
+
+    <nav>
+      <input class="search" id="search" placeholder="Search iPhone models, e.g. iPhone 17 Pro" />
+      <button class="btn btn-outline" onclick="openCart()">Cart <span class="cart-count" id="cartCount" style="display:none">0</span></button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="left">
+        <h2>Rent iPhone 16 & 17 Series — ₹599 / month</h2>
+        <p>Premium devices with flexible rentals. Demo store: images & ratings are preview-only placeholders for the UI. Replace with real assets for production.</p>
+        <button class="cta" onclick="document.getElementById('search').focus()">Shop iPhones</button>
+      </div>
+      <div class="right">
+        <img src="https://via.placeholder.com/340x180?text=iPhone+17+Pro+Max+Highlight" alt="iPhone highlight" style="border-radius:10px;border:1px solid rgba(255,255,255,0.04)" />
+      </div>
+    </section>
+
+    <div class="filters">
+      <label><input type="checkbox" id="onlyInStock" checked /> Only available</label>
+      <label style="margin-left:auto">Sort:
+        <select id="sort" onchange="renderProducts()">
+          <option value="popular">Most popular</option>
+          <option value="new">Newest</option>
+          <option value="rating">Rating</option>
+        </select>
+      </label>
+    </div>
+
+    <section class="grid" id="productsGrid"></section>
+
+    <div id="cartModal" class="modal" role="dialog" aria-hidden="true">
+      <div class="modal-card">
+        <h3>Your Cart</h3>
+        <div id="cartItems"></div>
+        <div style="margin-top:12px;display:flex;gap:8px;justify-content:space-between;align-items:center">
+          <div><strong>Total:</strong> <span id="cartTotal">₹0</span></div>
+          <div>
+            <button class="btn btn-outline" onclick="closeCart()">Continue</button>
+            <button class="btn btn-primary" onclick="checkout()">Checkout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section style="margin-top:18px;background:linear-gradient(180deg,#071021,#08131a);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)">
+      <h3>Track demo order</h3>
+      <div style="display:flex;gap:8px;align-items:center">
+        <input id="orderIdInput" placeholder="Enter demo order id (e.g. ORD-123)" style="padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:var(--text)" />
+        <button class="btn btn-primary" onclick="trackDemo()">Track</button>
+      </div>
+
+      <div id="trackerArea" style="margin-top:12px"></div>
+    </section>
+
+  </main>
+
+  <footer>
+    © <strong>Dreamhubz</strong> — demo site for learning. Domain: dreamhub.in (placeholder)
+  </footer>
+
+  <script>
+    // Demo dataset includes older iPhones + newly added iPhone 16 & 17 series (variants included)
+    // Images are placeholders (mix of white-background style and lifestyle-style placeholders).
+
+    const PRODUCTS = [
+      // older models (kept)
+      {id: 'iphone-11-64',name:'iPhone 11',variant:'White • 64GB',img:'https://via.placeholder.com/600x600?text=iPhone+11',rating:4.5,available:true},
+      {id: 'iphone-12-128',name:'iPhone 12',variant:'Red • 128GB',img:'https://via.placeholder.com/600x600?text=iPhone+12',rating:4.6,available:true},
+      {id: 'iphone-13-256',name:'iPhone 13',variant:'Midnight • 256GB',img:'https://via.placeholder.com/600x600?text=iPhone+13',rating:4.7,available:true},
+      {id: 'iphone-14-256',name:'iPhone 14',variant:'Starlight • 256GB',img:'https://via.placeholder.com/600x600?text=iPhone+14',rating:4.6,available:true},
+      {id: 'iphone-15-512',name:'iPhone 15',variant:'Black • 512GB',img:'https://via.placeholder.com/600x600?text=iPhone+15',rating:4.8,available:true},
+
+      // iPhone 16 series - realistic mockups (white background) + lifestyle
+      {id: 'iphone-16-128-black',name:'iPhone 16',variant:'Black • 128GB',img:'https://via.placeholder.com/600x600?text=iPhone+16+Black+%7C+Studio',rating:4.6,available:true},
+      {id: 'iphone-16-256-starlight',name:'iPhone 16',variant:'Starlight • 256GB',img:'https://via.placeholder.com/600x600?text=iPhone+16+Starlight+%7C+Studio',rating:4.5,available:true},
+      {id: 'iphone-16-pro-256-graphite',name:'iPhone 16 Pro',variant:'Graphite • 256GB',img:'https://via.placeholder.com/600x600?text=iPhone+16+Pro+Graphite+%7C+Lifestyle',rating:4.7,available:true},
+      {id: 'iphone-16-pro-512-gold',name:'iPhone 16 Pro',variant:'Gold • 512GB',img:'https://via.placeholder.com/600x600?text=iPhone+16+Pro+Gold+%7C+Studio',rating:4.8,available:true},
+      {id: 'iphone-16-pro-max-1tb',name:'iPhone 16 Pro Max',variant:'Silver • 1TB',img:'https://via.placeholder.com/600x600?text=iPhone+16+Pro+Max+1TB+%7C+Lifestyle',rating:4.9,available:true},
+
+      // iPhone 17 series - high-end mockups + lifestyle
+      {id: 'iphone-17-128-midnight',name:'iPhone 17',variant:'Midnight • 128GB',img:'https://via.placeholder.com/600x600?text=iPhone+17+Midnight+%7C+Studio',rating:4.7,available:true},
+      {id: 'iphone-17-256-sierra',name:'iPhone 17',variant:'Sierra Blue • 256GB',img:'https://via.placeholder.com/600x600?text=iPhone+17+Sierra+%7C+Lifestyle',rating:4.6,available:true},
+      {id: 'iphone-17-pro-256-space',name:'iPhone 17 Pro',variant:'Space Black • 256GB',img:'https://via.placeholder.com/600x600?text=iPhone+17+Pro+Space+Black+%7C+Studio',rating:4.9,available:true},
+      {id: 'iphone-17-pro-512-gold',name:'iPhone 17 Pro',variant:'Gold • 512GB',img:'https://via.placeholder.com/600x600?text=iPhone+17+Pro+Gold+%7C+Lifestyle',rating:4.9,available:true},
+      {id: 'iphone-17-pro-max-1tb',name:'iPhone 17 Pro Max',variant:'Titanium • 1TB',img:'https://via.placeholder.com/600x600?text=iPhone+17+Pro+Max+1TB+%7C+Hero',rating:5.0,available:true}
+    ];
+
+    const RENT_PRICE = 599; // ₹599 as requested
+    let cart = {};
+
+    function $(sel){return document.querySelector(sel)}
+    function $all(sel){return document.querySelectorAll(sel)}
+
+    function renderProducts(){
+      const grid = $('#productsGrid');
+      grid.innerHTML='';
+      const q = $('#search').value.toLowerCase();
+      const onlyAvailable = $('#onlyInStock').checked;
+      const sortBy = $('#sort').value;
+      let items = PRODUCTS.filter(p=>{
+        if(onlyAvailable && !p.available) return false;
+        if(q && !(p.name.toLowerCase().includes(q) || p.variant.toLowerCase().includes(q))) return false;
+        return true;
+      });
+
+      if(sortBy==='rating') items.sort((a,b)=>b.rating-a.rating);
+      else if(sortBy==='new') items.sort((a,b)=>b.id.localeCompare(b.id));
+
+      items.forEach(p=>{
+        const card = document.createElement('article');
+        card.className='card';
+        card.innerHTML = `
+          <div class="thumb"><img src="${p.img}" alt="${p.name}" loading="lazy"></div>
+          <div class="title">${p.name}</div>
+          <div class="meta">${p.variant} • <small style="color:var(--muted)">Demo rating: ${p.rating} ★</small></div>
+          <div class="price">
+            <div>
+              <div class="rent">₹${RENT_PRICE}<span style="font-weight:400;font-size:13px;color:var(--muted)">/month</span></div>
+              <div style="font-size:12px;color:${p.available? '#34d399':'#fb7185'}">${p.available? 'Available':'Unavailable'}</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <button class="btn btn-primary" ${p.available? '':'disabled'} onclick="addToCart('${p.id}')">Rent</button>
+              <button class="btn btn-outline" onclick="openQuick('${p.id}')">View</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function addToCart(id){
+      if(!cart[id]) cart[id]=1; else cart[id]+=1;
+      updateCartUI();
+      openCart();
+    }
+
+    function updateCartUI(){
+      const count = Object.values(cart).reduce((s,n)=>s+n,0);
+      const el = $('#cartCount');
+      if(count>0){el.style.display='inline-block';el.textContent=count;} else el.style.display='none';
+    }
+
+    function openCart(){
+      $('#cartModal').classList.add('open');
+      renderCartItems();
+    }
+    function closeCart(){
+      $('#cartModal').classList.remove('open');
+    }
+
+    function renderCartItems(){
+      const wrap = $('#cartItems'); wrap.innerHTML='';
+      let total = 0;
+      for(const id in cart){
+        const product = PRODUCTS.find(p=>p.id===id);
+        const qty = cart[id];
+        const price = RENT_PRICE * qty;
+        total += price;
+        const row = document.createElement('div');
+        row.style.display='flex';row.style.alignItems='center';row.style.justifyContent='space-between';row.style.gap='8px';row.style.margin='8px 0';
+        row.innerHTML = `
+          <div style="display:flex;gap:10px;align-items:center">
+            <img src="${product.img}" width="56" height="56" style="border-radius:8px;object-fit:cover"/>
+            <div>
+              <div style="font-weight:700">${product.name}</div>
+              <div style="font-size:13px;color:var(--muted)">Qty: ${qty}</div>
+            </div>
+          </div>
+          <div style="text-align:right">
+            <div>₹${price}</div>
+            <div style="margin-top:6px"><button class="btn btn-outline" onclick="decrease('${id}')">-</button> <button class="btn btn-outline" onclick="increase('${id}')">+</button> <button class="btn" onclick="removeItem('${id}')">Remove</button></div>
+          </div>
+        `;
+        wrap.appendChild(row);
+      }
+      $('#cartTotal').textContent = '₹' + total;
+      $('#cartCount').textContent = Object.values(cart).reduce((s,n)=>s+n,0) || '';
+    }
+
+    function decrease(id){ if(cart[id]>1) cart[id]--; else delete cart[id]; renderCartItems(); updateCartUI(); }
+    function increase(id){ cart[id] = (cart[id]||0)+1; renderCartItems(); updateCartUI(); }
+    function removeItem(id){ delete cart[id]; renderCartItems(); updateCartUI(); }
+
+    function checkout(){
+      if(Object.keys(cart).length===0){ alert('Cart is empty'); return; }
+      const name = prompt('Enter your full name for the demo order');
+      if(!name) return;
+      const address = prompt('Enter demo delivery address');
+      if(!address) return;
+      const orderId = 'ORD-' + Math.floor(Math.random()*90000 + 10000);
+      alert('Demo order placed: ' + orderId + '\n(This is a demo — no real payment was taken)');
+      const order = {id:orderId,name,address,items:JSON.parse(JSON.stringify(cart)),placedAt:Date.now(),stage:1};
+      localStorage.setItem('dreamhubz_demo_order_'+orderId, JSON.stringify(order));
+      cart = {}; updateCartUI(); closeCart();
+      $('#orderIdInput').value = orderId; trackDemo();
+    }
+
+    function trackDemo(){
+      const id = $('#orderIdInput').value.trim();
+      const area = $('#trackerArea'); area.innerHTML='';
+      if(!id){ area.innerHTML='<div style="color:var(--muted)">Enter a demo order id to view simulated tracking.</div>'; return; }
+      const raw = localStorage.getItem('dreamhubz_demo_order_'+id);
+      if(!raw){ area.innerHTML='<div style="color:#fb7185">No demo order found with id '+id+'</div>'; return; }
+      const order = JSON.parse(raw);
+      const elapsed = Date.now() - order.placedAt;
+      const stages = ['Order placed','Processing','Shipped','Out for delivery','Delivered'];
+      let stageIndex = Math.min(4, Math.floor(elapsed / (1000*10)));
+      area.innerHTML = '<div style="font-size:14px;margin-bottom:8px">Order <strong>'+id+'</strong> — <span style="color:var(--muted)">'+order.name+'</span></div>';
+      const tracker = document.createElement('div'); tracker.className='tracker';
+      stages.forEach((s,i)=>{
+        const div = document.createElement('div'); div.className='step' + (i<=stageIndex? ' active':''); div.textContent = s; tracker.appendChild(div);
+      });
+      area.appendChild(tracker);
+      area.innerHTML += '<div style="margin-top:8px;color:var(--muted);font-size:13px">This tracking is a demo — times are simulated for UI preview.</div>';
+    }
+
+    function openQuick(id){
+      const p = PRODUCTS.find(x=>x.id===id);
+      alert(p.name + '\n\n' + p.variant + '\nDemo rating: ' + p.rating + '\nRent: ₹' + RENT_PRICE + '/month\n\n(This view is a quick demo popup.)');
+    }
+
+    $('#search').addEventListener('input', ()=>setTimeout(renderProducts,150));
+    $('#onlyInStock').addEventListener('change', renderProducts);
+
+    renderProducts();
+  </script>
+</body>
+</html>
